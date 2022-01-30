@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "MCU_RaspberryPi_and_Boards")(type "Legacy")(uri "${KIPRJMOD}/parts/RP2040/MCU_RaspberryPi_and_Boards.lib")(options "")(descr ""))
+  (lib (name "DAC8571IDGKR")(type "Legacy")(uri "${KIPRJMOD}/parts/DAC8571IDGKR/DAC8571IDGKR.lib")(options "")(descr ""))
+)
