@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name "RP2040")(type "KiCad")(uri "${KIPRJMOD}/parts/RP2040")(options "")(descr ""))
+  (lib (name "DAC8571IDGKR")(type "KiCad")(uri "${KIPRJMOD}/parts/DAC8571IDGKR")(options "")(descr ""))
+  (lib (name "experimental")(type "KiCad")(uri "${KIPRJMOD}/parts/experimental")(options "")(descr ""))
+)
