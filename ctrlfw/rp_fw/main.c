@@ -11,7 +11,7 @@ void reset_ctr() { ctr = 0; }
 void run_sweep() {
     // Sweep
     //for (uint16_t i = 20500; i < 21200; i += 5) {
-    for (uint16_t i = 14500; i < 25000; i += 20) {
+    for (uint16_t i = 13500; i < 26000; i += 40) {
         gpio_put(RSTn_PIN, 0);
         sleep_ms(10);
         reset_ctr();
@@ -63,7 +63,7 @@ void reset_outputbuf() {
 }
 
 void caravel_gpio(unsigned int gpio, uint32_t events) {
-    if ((gpio == FLASH_CS_PIN) && (events & 0x8 == 0x8)) {
+    if ((gpio == FLASH_CS_PIN)) {
         ctr++;
 
     } else if (gpio == CARAVEL_GPIO_PIN) {
@@ -101,19 +101,20 @@ void run_sweep2() {
     // Sweep
     //for (uint16_t i = 20500; i < 21200; i += 5) {
     //for (uint16_t i = 19000; i < 22000; i += 10) {
-    for (uint16_t i = 19000; i < 27000; i += 20) {
+    for (uint16_t i = 16700; i < 22900; i += 200) {
         gpio_put(RSTn_PIN, 0);
         sleep_ms(10);
         reset_ctr();
         printf("cfg %d %d %d -> ", i, set_voltage_caravel(20500), set_voltage_proj(i));
         reset_outputbuf();
         gpio_put(RSTn_PIN, 1);
-        sleep_ms(800);
+        sleep_ms(500);
         //gpio_put(RSTn_PIN, 0);
         outputbuf[char_ctr] = 0;
         //printf("readout %s\n", outputbuf);
-        printf("%d\n", char_ctr);
+        printf("%d %d\n", ctr, char_ctr);
         printf("readout  = ");
+        //hexprintln(outputbuf, 16);
         hexprintln(outputbuf, 32);
         printf("expected = 41812dc60561798dc0cc6e574b641893ecf4186d4097283af4a6cff3eddaa4a0\n");
     }
@@ -142,6 +143,7 @@ int main() {
 
     // apparently this handles all IRQs
     gpio_set_irq_enabled_with_callback(CARAVEL_GPIO_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &caravel_gpio);
+    gpio_set_irq_enabled_with_callback(FLASH_CS_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &caravel_gpio);
 
     // clock output 500khz
     clock_gpio_init(XCLK_PIN, CLOCKS_CLK_GPOUT0_CTRL_AUXSRC_VALUE_CLK_USB, 12);
@@ -155,6 +157,7 @@ int main() {
     //printf("%d\n", successes);
 
     run_sweep2();
+    //run_sweep();
 
     gpio_put(RSTn_PIN, 0);
     //run_repeated();
