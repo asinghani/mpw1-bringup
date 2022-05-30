@@ -1,0 +1,1088 @@
+first signs of activity
+
+
+die 4:
+    - caravel works at 20500
+    - sha256 works at 19000
+    - aes has some activity but not stable
+
+
+die 8:
+    - aes has some activity but not stable
+    - sha256 not working(?)
+    broken/lost due to solder damage
+
+
+die 11:
+    - sha256 almost works but not quite
+
+die 12:
+    - dead?
+
+
+
+- die 9: unusable?
+
+
+chip 9:
+
+cfg 20480 0 0 -> 4397
+cfg 20510 0 0 -> 4397
+cfg 20540 0 0 -> 4397
+cfg 20570 0 0 -> 4395
+cfg 20600 0 0 -> 4396
+cfg 20630 0 0 -> 4397
+cfg 20660 0 0 -> 4397
+cfg 20690 0 0 -> 4397
+cfg 20720 0 0 -> 4397
+cfg 20750 0 0 -> 4396
+cfg 20780 0 0 -> 4397
+cfg 20810 0 0 -> 4397
+cfg 20840 0 0 -> 4396
+cfg 20870 0 0 -> 4396
+cfg 20900 0 0 -> 4396
+cfg 20930 0 0 -> 4396
+cfg 20960 0 0 -> 4397
+cfg 20990 0 0 -> 4397
+cfg 21020 0 0 -> 4397
+cfg 21050 0 0 -> 4396
+cfg 21080 0 0 -> 4396
+cfg 21110 0 0 -> 4397
+cfg 21140 0 0 -> 4396
+cfg 21170 0 0 -> 4396
+cfg 21200 0 0 -> 4397
+cfg 21230 0 0 -> 4397
+
+
+chip 1 - sus, no activity?
+
+
+chip 4 - able to read out identifier
+
+-------------------------
+longer sha256 code:
+
+
+    if (*((uint32_t*)0x30010010) != 0x2CF24DBA) goto fail1;
+    if (*((uint32_t*)0x30010014) != 0x5FB0A30E) goto fail1;
+    if (*((uint32_t*)0x30010018) != 0x26E83B2A) goto fail1;
+    if (*((uint32_t*)0x3001001C) != 0xC5B9E29E) goto fail1;
+    if (*((uint32_t*)0x30010020) != 0x1B161E5C) goto fail1;
+    if (*((uint32_t*)0x30010024) != 0x1FA7425E) goto fail1;
+    if (*((uint32_t*)0x30010028) != 0x73043362) goto fail1;
+    if (*((uint32_t*)0x3001002C) != 0x938B9824) goto fail1;
+
+
+    41812dc60561798dc0cc6e574b641893ecf4186d4097283af4a6cff3eddaa4a0
+
+
+
+
+
+main:
+	li t0, 0x30010000
+    
+    # sha256 init
+    li t1, 1
+    sw t1, 0(t0)
+    
+li t1, 0x33613537
+sw t1, 4(t0)
+li t1, 0x63643330
+sw t1, 4(t0)
+li t1, 0x35363066
+sw t1, 4(t0)
+li t1, 0x62326637
+sw t1, 4(t0)
+li t1, 0x32383361
+sw t1, 4(t0)
+li t1, 0x37343333
+sw t1, 4(t0)
+li t1, 0x65636539
+sw t1, 4(t0)
+li t1, 0x31393436
+sw t1, 4(t0)
+li t1, 0x61633664
+sw t1, 4(t0)
+li t1, 0x61346234
+sw t1, 4(t0)
+li t1, 0x30343063
+sw t1, 4(t0)
+li t1, 0x38633337
+sw t1, 4(t0)
+li t1, 0x61666135
+sw t1, 4(t0)
+li t1, 0x36343031
+sw t1, 4(t0)
+li t1, 0x39396465
+sw t1, 4(t0)
+li t1, 0x64353964
+sw t1, 4(t0)
+li t1, 0x80000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000000
+sw t1, 4(t0)
+li t1, 0x00000200
+sw t1, 4(t0)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    li t0, 0x30010010
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+    li t0, 0x30010014
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+    li t0, 0x30010018
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+    li t0, 0x3001001C
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+    li t0, 0x30010020
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+    li t0, 0x30010024
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+    li t0, 0x30010028
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+    li t0, 0x3001002C
+	lw t1, 0(t0)
+    
+    srli a0, t1, 24
+	jal ra, sendbyte
+    
+    srli a0, t1, 16
+	jal ra, sendbyte
+    
+    srli a0, t1, 8
+	jal ra, sendbyte
+    
+    srli a0, t1, 0
+	jal ra, sendbyte
+    
+    
+spin:
+	jal x0, spin
+
+sendbit:
+	li a1, 0x21000000
+	sw x0, 0(a1)
+	sw x0, 4(a1)
+	sw x0, 8(a1)
+	sw x0, 12(a1)
+
+	# set output high
+    li a2, 1
+    sw a2, 0(a1)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    # set output high if input is 1, else low
+    andi a0, a0, 1
+    sw a0, 0(a1)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+	# set output low
+    li a2, 0
+    sw a2, 0(a1)
+
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    ret
+
+sendbyte:
+	addi a3, a0, 0
+    addi a4, ra, 0
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    addi ra, a4, 0
+    
+    ret
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------
+
+ident readout code:
+
+
+main:
+	li t0, 0x30010050
+	addi t1, t0, 64 # end ptr
+
+loop:
+	lb a0, 0(t0)
+	jal ra, sendbyte
+    addi t0, t0, 1
+	bltu t0, t1, loop
+
+spin: 
+	jal x0, spin
+
+sendbit:
+	li a1, 0x21000000
+	sw x0, 0(a1)
+	sw x0, 4(a1)
+	sw x0, 8(a1)
+	sw x0, 12(a1)
+
+	# set output high
+    li a2, 1
+    sw a2, 0(a1)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    # set output high if input is 1, else low
+    andi a0, a0, 1
+    sw a0, 0(a1)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+	# set output low
+    li a2, 0
+    sw a2, 0(a1)
+
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    ret
+
+sendbyte:
+	addi a3, a0, 0
+    addi a4, ra, 0
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    addi ra, a4, 0
+    
+    ret
+   
+
+------------------------------------------------
+
+unfinished aes test code:
+
+
+main:
+	li t0, 0x30000000
+    
+    # aes mode
+    li t1, 0
+    sw t1, 0(t0)
+    
+    # load key (key0, key1, key2, key3)
+    li t1, 0
+    sw t1, 64(t0)
+    li t1, 0
+    sw t1, 64(t0)
+    li t1, 0
+    sw t1, 64(t0)
+    li t1, 0
+    sw t1, 64(t0)
+    
+    # update key
+    li t1, 1
+    sw t1, 12(t0)
+    
+    # let key update
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    # load iv
+    li t1, 0
+    sw t1, 0(t0)
+    
+    # iv0, iv1, iv2, iv3
+    li t1, 0
+    sw t1, 16(t0)
+    li t1, 0
+    sw t1, 16(t0)
+    li t1, 0
+    sw t1, 16(t0)
+    li t1, 0
+    sw t1, 16(t0)
+    
+    li t1, 1
+    sw t1, 8(t0)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    li t1, 8
+    sw t1, 0(t0)
+    
+    # load input data
+    
+    # in0, in1, in2, in3
+    li t1, 0
+    sw t1, 16(t0)
+    li t1, 0
+    sw t1, 16(t0)
+    li t1, 0
+    sw t1, 16(t0)
+    li t1, 0
+    sw t1, 16(t0)
+    
+    li t1, 1
+    sw t1, 4(t0)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    addi t0, t0, 48
+    addi t1, t0, 16
+   
+	lb t1, 0(t0)
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+	lb t2, 4(t0)
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+	lb t3, 8(t0)
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+	lb t4, 12(t0)
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    
+    addi t1, t2, 0
+    
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    
+    addi t1, t3, 0
+    
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    
+    addi t1, t4, 0
+    
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    andi a0, t1, 0xFF
+	jal ra, sendbyte
+    srli t1, t1, 8
+    
+
+spin: 
+	jal x0, spin
+
+sendbit:
+	li a1, 0x21000000
+	sw x0, 0(a1)
+	sw x0, 4(a1)
+	sw x0, 8(a1)
+	sw x0, 12(a1)
+
+	# set output high
+    li a2, 1
+    sw a2, 0(a1)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    # set output high if input is 1, else low
+    andi a0, a0, 1
+    sw a0, 0(a1)
+    
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+	# set output low
+    li a2, 0
+    sw a2, 0(a1)
+
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    
+    ret
+
+sendbyte:
+	addi a3, a0, 0
+    addi a4, ra, 0
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    andi a0, a3, 1
+	jal ra, sendbit
+    srli a3, a3, 1
+    
+    addi ra, a4, 0
+    
+    ret
+   
+
+
+
+
+
+
+
