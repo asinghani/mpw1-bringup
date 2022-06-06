@@ -23,4 +23,6 @@ MPW-ONE was the first round of the open-source Google-sponsored tapeout, and as 
 
 ![identifiers](docs/ident.png)
 
+![sweep](docs/sweep.png)
+
 The AES core responded to commands but, despite varying the clock frequency, it was not possible to keep clock and power stable enough to get a full successful CBC encryption or decryption. It is likely that there are some dies in the batch where AES will work, but due to the inefficiency in soldering and testing each individual die, I have not tested this yet (I have instead re-submitted an updated version of the AES core to [MPW-THREE](https://github.com/asinghani/crypto-accelerator-chip-v2), using a version of the Caravel padframe does not have the clock-tree issue).
